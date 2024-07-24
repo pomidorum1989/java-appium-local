@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Android suite" verbose="1" parallel="tests" thread-count="2">
+    <test name="Web app test on Android 7">
+        <parameter name="platform" value="Android"/>
+        <parameter name="udid" value="emulator-5556"/>
+        <parameter name="chromeDriverPort" value="9516"/>
+        <classes>
+            <class name="io.dorum.tests.LoginTest" />
+        </classes>
+    </test>
+    <test name="Web app test on Android 11">
+        <parameter name="platform" value="Android"/>
+        <parameter name="udid" value="emulator-5554"/>
+        <parameter name="chromeDriverPort" value="9515"/>
+        <classes>
+            <class name="io.dorum.tests.LoginTest" />
+        </classes>
+    </test>
+</suite>

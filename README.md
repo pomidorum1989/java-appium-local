@@ -1,0 +1,1 @@
+./gradlew test -Dtestng.suite=src/test/resources/ios-suite.xml

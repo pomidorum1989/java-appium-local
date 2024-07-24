@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="iOS suite" verbose="1" parallel="tests" thread-count="2">
+    <test name="iOS tests iPhone 15">
+        <parameter name="platform" value="ios"/>
+        <parameter name="udid" value="321C4A8C-AE5E-43D3-9CF2-B01E4EE3DF0C"/>
+        <parameter name="deviceName" value="iPhone 15 Pro Max"/>
+        <parameter name="wdaLocalPort" value="8100"/>
+        <classes>
+            <class name="io.dorum.tests.LoginTest" />
+        </classes>
+    </test>
+    <test name="iOS tests iPhone SE">
+        <parameter name="platform" value="ios"/>
+        <parameter name="udid" value="62EA1EB4-30AD-4180-8799-FA2854364C92"/>
+        <parameter name="deviceName" value="iPhone SE (3rd generation)"/>
+        <parameter name="wdaLocalPort" value="8101"/>
+        <classes>
+            <class name="io.dorum.tests.LoginTest" />
+        </classes>
+    </test>
+</suite>
