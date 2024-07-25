@@ -14,6 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.Objects;
 
 @Log4j2
@@ -48,6 +49,10 @@ public class DriverFactory {
                 .setPlatformName("Android")
                 .setPlatformVersion("15")
                 .setAvd(deviceName)
+                .setAvdLaunchTimeout(Duration.ofMinutes(2))
+                .setAvdReadyTimeout(Duration.ofMinutes(2))
+                .setUiautomator2ServerLaunchTimeout(Duration.ofMinutes(2))
+                .headless()
 //                .setUdid(udId)
                 .setDeviceName(deviceName)
                 .setSystemPort(systemPort)
@@ -68,6 +73,7 @@ public class DriverFactory {
                 .setPlatformName("IOS")
                 .setPlatformVersion("17.5")
 //                .setUdid(udId)
+                .headless()
                 .setDeviceName(deviceName)
                 .setWdaLocalPort(wdaPort)
                 .setSafariAllowPopups(true)
