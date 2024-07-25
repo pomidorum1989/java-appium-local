@@ -18,8 +18,8 @@ public class PropertiesUtils {
 
     static {
         PROJECT_CONFIG_PROPERTIES = loadFile("config.properties");
-        IOS_PROPERTIES = loadFile("androidLocators.properties");
-        ANDROID_PROPERTIES = loadFile("iOSLocators.properties");
+        IOS_PROPERTIES = loadFile("android-locators.properties");
+        ANDROID_PROPERTIES = loadFile("ios-locators.properties");
     }
 
     public static Properties loadFile(String fileName) {

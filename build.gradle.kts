@@ -14,7 +14,7 @@ val seleniumVersion = "4.23.0"
 val appiumVersion = "9.2.3"
 val lombokVersion = "1.18.34"
 val log4jVersion = "2.23.1"
-val appacheVersion = "2.16.1"
+val apacheVersion = "2.16.1"
 
 repositories {
     mavenCentral()
@@ -42,7 +42,7 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
 
     // https://mvnrepository.com/artifact/commons-io/commons-io
-    implementation("commons-io:commons-io:$appacheVersion")
+    implementation("commons-io:commons-io:$apacheVersion")
 }
 
 tasks.test {

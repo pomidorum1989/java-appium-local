@@ -1,17 +1,23 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Android suite" verbose="1" parallel="tests" thread-count="2">
-    <test name="Web app test on Android 7">
+    <test name="Chrome test on Pixel 6a">
         <parameter name="platform" value="Android"/>
         <parameter name="udid" value="emulator-5556"/>
-        <parameter name="chromeDriverPort" value="9516"/>
+        <parameter name="deviceName" value="Pixel_6a_API_35"/>
+        <parameter name="port" value="8201"/><!--systemPort-->
+        <parameter name="chromeDriverPort" value="9520"/>
+        <parameter name="mjpegPort" value="8092"/>
         <classes>
             <class name="io.dorum.tests.LoginTest" />
         </classes>
     </test>
-    <test name="Web app test on Android 11">
+    <test name="Chrome test on Pixel 4">
         <parameter name="platform" value="Android"/>
         <parameter name="udid" value="emulator-5554"/>
-        <parameter name="chromeDriverPort" value="9515"/>
+        <parameter name="deviceName" value="Pixel_4_API_35"/>
+        <parameter name="port" value="8200"/>
+        <parameter name="chromeDriverPort" value="9530"/>
+        <parameter name="mjpegPort" value="8093"/>
         <classes>
             <class name="io.dorum.tests.LoginTest" />
         </classes>

@@ -11,6 +11,5 @@ public class LoginTest extends BaseTest {
     public void loginTest() {
         LoginPage page = new LoginPage();
         page.openUrl("http://www.google.com");
-        takeScreenShot("1");
     }
 }

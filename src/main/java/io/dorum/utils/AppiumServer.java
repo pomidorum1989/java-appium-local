@@ -8,8 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.Objects;
 
 @Log4j2
@@ -17,12 +15,13 @@ import java.util.Objects;
 public class AppiumServer {
     private static AppiumDriverLocalService service;
 
-    public static void startServer(int port) throws FileNotFoundException {
+    public static void startServer(int port) {
         AppiumServiceBuilder builder = new AppiumServiceBuilder()
                 .usingPort(port)
-                .withArgument(GeneralServerFlag.SESSION_OVERRIDE)
+//                .withArgument(GeneralServerFlag.SESSION_OVERRIDE)
                 .withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
-                .withLogFile(new File("./build/AppiumServerLogs.txt"));
+                .withArgument(GeneralServerFlag.ALLOW_INSECURE, "chromedriver_autodownload")
+                .withLogFile(new File("./build/logs/AppiumServerLogs.txt"));
         service = AppiumDriverLocalService.buildService(builder);
         service.start();
         service.clearOutPutStreams();

@@ -7,7 +7,7 @@
         <Routing name="RoutingAppender">
             <Routes pattern="$${ctx:threadName}">
                 <Route>
-                    <File name="File-${ctx:threadName}" fileName="target/logs/${ctx:threadName}.log">
+                    <File name="File-${ctx:threadName}" fileName="build/logs/${ctx:threadName}.log">
                         <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %-50style{[%c{1}]:%L} - %m%n"/>
                     </File>
                 </Route>

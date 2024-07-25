@@ -4,7 +4,8 @@
         <parameter name="platform" value="ios"/>
         <parameter name="udid" value="321C4A8C-AE5E-43D3-9CF2-B01E4EE3DF0C"/>
         <parameter name="deviceName" value="iPhone 15 Pro Max"/>
-        <parameter name="wdaLocalPort" value="8100"/>
+        <parameter name="port" value="8100"/><!--wdaLocalPort-->
+        <parameter name="mjpegPort" value="8090"/>
         <classes>
             <class name="io.dorum.tests.LoginTest" />
         </classes>
@@ -13,7 +14,8 @@
         <parameter name="platform" value="ios"/>
         <parameter name="udid" value="62EA1EB4-30AD-4180-8799-FA2854364C92"/>
         <parameter name="deviceName" value="iPhone SE (3rd generation)"/>
-        <parameter name="wdaLocalPort" value="8101"/>
+        <parameter name="port" value="8101"/><!--wdaLocalPort-->
+        <parameter name="mjpegPort" value="8091"/>
         <classes>
             <class name="io.dorum.tests.LoginTest" />
         </classes>

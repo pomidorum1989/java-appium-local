@@ -22,17 +22,19 @@ public class DriverFactory {
 
     private static final ThreadLocal<AppiumDriver> THREAD_LOCAL = new ThreadLocal<>();
 
-    public static void createDriver(String platform, String deviceName, String udId, int port) {
+    public static void createDriver(String platform, String deviceName, String udId, int port, int chromeDriverPort, int mjpegPort) {
         long currentThread = Thread.currentThread().threadId();
         if (Objects.isNull(THREAD_LOCAL.get())) {
             switch (platform.toLowerCase()) {
                 case "android":
-                    THREAD_LOCAL.set(createAndroidDriver(deviceName, udId, port));
-                    log.info("Android driver {} created for device: {}, port: {}", currentThread, deviceName, port);
+                    THREAD_LOCAL.set(createAndroidDriver(deviceName, udId, port, chromeDriverPort, mjpegPort));
+                    log.info("Android driver {} created for device: {}, system port: {}, chrome driver port {}, " +
+                                    "mjpeg port {}", currentThread, deviceName, port, chromeDriverPort, mjpegPort);
                     break;
                 case "ios":
-                    THREAD_LOCAL.set(createIOSDriver(deviceName, udId, port));
-                    log.info("iOS driver {} created for device: {}, port: {}", currentThread, deviceName, port);
+                    THREAD_LOCAL.set(createIOSDriver(deviceName, udId, port, mjpegPort));
+                    log.info("iOS driver {} created for device: {}, wda port: {}, mjpeg port {}",
+                            currentThread, deviceName, port, mjpegPort);
                     break;
                 default:
                     throw new IllegalArgumentException("Invalid platform: " + platform);
@@ -40,38 +42,40 @@ public class DriverFactory {
         }
     }
 
-    private static AppiumDriver createAndroidDriver(String deviceName, String udId, int port) {
+    private static AppiumDriver createAndroidDriver(String deviceName, String udId, int systemPort, int chromeDriverPort, int mjpegPort) {
         UiAutomator2Options options = new UiAutomator2Options()
                 .setAutomationName("uiautomator2")
                 .setPlatformName("Android")
-                .setPlatformVersion("12")
-                .setAvd(udId)
+                .setPlatformVersion("15")
+                .setAvd(deviceName)
 //                .setUdid(udId)
                 .setDeviceName(deviceName)
-                .setSystemPort(port)
+                .setSystemPort(systemPort)
                 .setOrientation(ScreenOrientation.PORTRAIT)
                 .setNoReset(false)
-//                .setMjpegServerPort()
-//                .setChromedriverPort()
+                .setMjpegServerPort(mjpegPort)
+                .withBrowserName("Chrome")
 //                .skipServerInstallation()
 //                .skipDeviceInitialization()
-                .setApp(PropertiesUtils.getAppPath("android"));
+//                .setApp(PropertiesUtils.getAppPath("android")).
+                .setChromedriverPort(chromeDriverPort);
         return new AndroidDriver(getAppiumServerUrl(), options);
     }
 
-    private static AppiumDriver createIOSDriver(String deviceName, String udId, int port) {
+    private static AppiumDriver createIOSDriver(String deviceName, String udId, int wdaPort, int mjpegPort) {
         XCUITestOptions options = new XCUITestOptions()
                 .setAutomationName("XCUITest")
                 .setPlatformName("IOS")
                 .setPlatformVersion("17.5")
 //                .setUdid(udId)
                 .setDeviceName(deviceName)
-                .setWdaLocalPort(port)
+                .setWdaLocalPort(wdaPort)
                 .setSafariAllowPopups(true)
                 .withBrowserName("Safari")
                 .setOrientation(ScreenOrientation.PORTRAIT)
-                .setNoReset(false);
-//                .setApp(PropertiesUtils.getAppPath("ios"));
+                .setNoReset(false)
+//                .setApp(PropertiesUtils.getAppPath("ios")).
+                .setMjpegServerPort(mjpegPort);
         return new IOSDriver(getAppiumServerUrl(), options);
     }
 
