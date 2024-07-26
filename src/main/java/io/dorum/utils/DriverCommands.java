@@ -35,7 +35,11 @@ public class DriverCommands {
     }
 
     public static String getPlatform() {
-        return DriverFactory.getAppiumDriver().getCapabilities().getPlatformName().name();
+        return DriverFactory.getAppiumDriver().getCapabilities().getPlatformName().name().toLowerCase();
+    }
+
+    public static String getDeviceName() {
+        return DriverFactory.getAppiumDriver().getCapabilities().getCapability("deviceName").toString();
     }
 
     public static void startVideoRecording() {

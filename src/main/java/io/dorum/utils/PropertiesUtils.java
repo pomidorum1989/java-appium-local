@@ -51,8 +51,9 @@ public class PropertiesUtils {
         };
     }
 
-    public static String getLocator(String key, String platform) {
-        return switch (platform.toLowerCase()) {
+    public static String getLocator(String key) {
+        String platform = DriverCommands.getPlatform();
+        return switch (platform) {
             case "ios" -> IOS_PROPERTIES.getProperty(key);
             case "android" -> ANDROID_PROPERTIES.getProperty(key);
             default -> {
@@ -60,5 +61,9 @@ public class PropertiesUtils {
                 yield null;
             }
         };
+    }
+
+    public static String getBaseURL() {
+        return PROJECT_CONFIG_PROPERTIES.getProperty("baseUrl");
     }
 }

@@ -34,5 +34,5 @@ It supports parallel execution on multiple devices/emulators and uses a Gradle b
   
 - Run tests
     ```sh
-    ./gradlew test -Dtestng.suite=src/test/resources/ios-suite.xml
-    ./gradlew test -Dtestng.suite=src/test/resources/android-suite.xml
+    ./gradlew clean test -Dtestng.suite=src/test/resources/ios-suite.xml
+    ./gradlew clean test -Dtestng.suite=src/test/resources/android-suite.xml
